@@ -1,0 +1,4 @@
+----------- REPORTE DE VENTAS -----------
+Costo Total: $1,250.50
+Tiempo de ejecución: 0.0010 segundos
+-----------------------------------------
