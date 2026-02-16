@@ -1,0 +1,5 @@
+[
+    {"product": "Laptop", "quantity": 1},
+    {"product": "Mouse", "quantity": 2},
+    {"product": "Teclado", "quantity": "error_dato"}
+]
