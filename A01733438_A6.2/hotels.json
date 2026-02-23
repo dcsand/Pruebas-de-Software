@@ -1,0 +1,14 @@
+[
+    {
+        "hotel_id": "H01",
+        "name": "Hotel Tequendama",
+        "location": "Bogotá",
+        "rooms_available": 15
+    },
+    {
+        "hotel_id": "H02",
+        "name": "Hotel San Fernando Plaza",
+        "location": "Medellín",
+        "rooms_available": 8
+    }
+]
