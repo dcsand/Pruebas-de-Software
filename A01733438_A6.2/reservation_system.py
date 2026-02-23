@@ -166,7 +166,8 @@ class Customer:
         """Crea un cliente y lo guarda en el archivo."""
         customers = load_data(filename)
 
-        if any(c.get("customer_id") == customer_data.customer_id for c in customers):
+        if any(c.get("customer_id") == customer_data.customer_id
+               for c in customers):
             print(f"Error: El cliente {customer_data.customer_id} ya existe.")
             return False
 
@@ -203,7 +204,8 @@ class Customer:
         return None
 
     @classmethod
-    def modify_customer_info(cls, customer_id, key, new_val, filename="customers.json"):
+    def modify_customer_info(cls, customer_id, key, new_val,
+                             filename="customers.json"):
         """Modifica la información de un cliente existente."""
         customers = load_data(filename)
         for customer in customers:
@@ -241,8 +243,9 @@ class Reservation:
         """Crea una reservación vinculando cliente y hotel."""
         reservations = load_data(filename)
 
-        if any(r.get("reservation_id") == res_data.reservation_id for r in reservations):
-            print(f"Error: La reservación {res_data.reservation_id} ya existe.")
+        if any(r.get("reservation_id") == res_data.reservation_id
+               for r in reservations):
+            print(f"Error: Reservación {res_data.reservation_id} ya existe.")
             return False
 
         reservations.append(res_data.to_dict())
@@ -253,7 +256,10 @@ class Reservation:
     def cancel_reservation(cls, reservation_id, filename="reservations.json"):
         """Cancela una reservación existente."""
         reservations = load_data(filename)
-        updated = [r for r in reservations if r.get("reservation_id") != reservation_id]
+        updated = [
+            r for r in reservations
+            if r.get("reservation_id") != reservation_id
+        ]
 
         if len(reservations) == len(updated):
             print("Error: Reservación no encontrada para cancelar.")
