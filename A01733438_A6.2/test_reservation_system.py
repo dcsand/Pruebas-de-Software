@@ -7,8 +7,9 @@ asegurando una cobertura superior al 85% y cumpliendo PEP-8.
 
 import unittest
 import os
-import json
-from reservation_system import Hotel, Customer, Reservation, load_data, save_data
+from reservation_system import (
+    Hotel, Customer, Reservation, load_data, save_data
+)
 
 
 class TestDataAccess(unittest.TestCase):
@@ -76,16 +77,22 @@ class TestHotel(unittest.TestCase):
     def test_modify_hotel_info(self):
         """Prueba la modificación de atributos de un hotel."""
         Hotel.create_hotel(self.hotel, self.file)
-        self.assertTrue(Hotel.modify_hotel_info("H1", "name", "Nuevo", self.file))
-        self.assertFalse(Hotel.modify_hotel_info("H1", "falso", "X", self.file))
-        self.assertFalse(Hotel.modify_hotel_info("H99", "name", "X", self.file))
+        self.assertTrue(
+            Hotel.modify_hotel_info("H1", "name", "Nuevo", self.file)
+        )
+        self.assertFalse(
+            Hotel.modify_hotel_info("H1", "falso", "X", self.file)
+        )
+        self.assertFalse(
+            Hotel.modify_hotel_info("H99", "name", "X", self.file)
+        )
 
     def test_reserve_room(self):
         """Prueba la reserva de habitaciones y límite de disponibilidad."""
         Hotel.create_hotel(self.hotel, self.file)
-        self.assertTrue(Hotel.reserve_room("H1", self.file))  # Queda 1
-        self.assertTrue(Hotel.reserve_room("H1", self.file))  # Quedan 0
-        self.assertFalse(Hotel.reserve_room("H1", self.file)) # Falla por cupo
+        self.assertTrue(Hotel.reserve_room("H1", self.file))
+        self.assertTrue(Hotel.reserve_room("H1", self.file))
+        self.assertFalse(Hotel.reserve_room("H1", self.file))
         self.assertFalse(Hotel.reserve_room("H99", self.file))
 
     def test_cancel_reservation(self):
@@ -128,9 +135,15 @@ class TestCustomer(unittest.TestCase):
     def test_modify_customer_info(self):
         """Prueba la modificación de atributos del cliente."""
         Customer.create_customer(self.customer, self.file)
-        self.assertTrue(Customer.modify_customer_info("C1", "name", "Dani", self.file))
-        self.assertFalse(Customer.modify_customer_info("C1", "falso", "X", self.file))
-        self.assertFalse(Customer.modify_customer_info("C99", "name", "X", self.file))
+        self.assertTrue(
+            Customer.modify_customer_info("C1", "name", "Dani", self.file)
+        )
+        self.assertFalse(
+            Customer.modify_customer_info("C1", "falso", "X", self.file)
+        )
+        self.assertFalse(
+            Customer.modify_customer_info("C99", "name", "X", self.file)
+        )
 
 
 class TestReservation(unittest.TestCase):
@@ -148,14 +161,22 @@ class TestReservation(unittest.TestCase):
 
     def test_create_reservation(self):
         """Prueba la creación de reservaciones."""
-        self.assertTrue(Reservation.create_reservation(self.reservation, self.file))
-        self.assertFalse(Reservation.create_reservation(self.reservation, self.file))
+        self.assertTrue(
+            Reservation.create_reservation(self.reservation, self.file)
+        )
+        self.assertFalse(
+            Reservation.create_reservation(self.reservation, self.file)
+        )
 
     def test_cancel_reservation(self):
         """Prueba la cancelación de reservaciones."""
         Reservation.create_reservation(self.reservation, self.file)
-        self.assertTrue(Reservation.cancel_reservation("R1", self.file))
-        self.assertFalse(Reservation.cancel_reservation("R99", self.file))
+        self.assertTrue(
+            Reservation.cancel_reservation("R1", self.file)
+        )
+        self.assertFalse(
+            Reservation.cancel_reservation("R99", self.file)
+        )
 
 
 if __name__ == '__main__':
